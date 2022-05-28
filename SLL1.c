@@ -1,0 +1,72 @@
+//singly linear linked list
+/*
+	InsertFirst
+	InsertLast
+	InsertAtPosition
+	
+	DeleteFirst
+	DeleteLast
+	DeleteAtPosition
+	
+	Display
+	Count
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+	int data;
+	struct node *next;
+};
+
+typedef struct node NODE;
+typedef struct node * PNODE;
+typedef struct node ** PPNODE;
+
+
+
+
+/*
+	1: Allocate memory for node
+	2: Initialise the node
+	3: Check whether LL is empty or not
+	4: If LL is empty new node is first node
+	5: if LL contains atleast one node in it the store
+		the address of previous first node in next pointer
+		 of new node 
+
+*/
+void InsertFirst(PPNODE Head, int iNo)
+{
+	PNODE newn = NULL;
+
+	newn = (PNODE)malloc(sizeof(NODE));
+	
+	newn->data=iNo;
+	newn->next=NULL;
+
+	if(*Head == NULL)
+	{
+		*Head = newn;
+	}
+	else
+	{
+		newn->next=*Head;
+		*Head = newn;
+	}
+}
+
+int main()
+{
+	PNODE First = NULL;  //struct node *First = NULL;
+
+
+	InsertFirst(&First,101);
+	InsertFirst(&First,51);
+	InsertFirst(&First,21);
+	InsertFirst(&First,11);
+
+	return 0;
+}
